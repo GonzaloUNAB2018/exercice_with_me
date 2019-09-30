@@ -1,0 +1,25 @@
+<ion-content padding>
+
+  <ion-navbar *ngIf="ableButtons"></ion-navbar>
+
+  <p class="title" padding>Sincronice su actividad</p>
+
+  <button ion-button full round large color="primary"  
+  
+  (click)="syncDb()" *ngIf="ableButtons">SINCRONIZAR</button>
+
+  <button ion-button full round large color="primary"  
+  
+  disabled *ngIf="!ableButtons">SINCRONIZAR</button>
+
+  <br>
+
+  <p class="item-text">Cargue los datos guardados en su smartphone</p>
+
+  <div id="myProgress">
+    <div id="myBar"></div>
+  </div>
+
+  <p class="item-text"> {{loadInfo}} </p>
+  
+</ion-content>

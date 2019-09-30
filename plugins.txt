@@ -1,0 +1,21 @@
+ionic cordova plugin add cordova-plugin-background-mode
+ionic cordova plugin add cordova-sqlite-storage
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="Para localizar la aplicación"
+ionic cordova plugin add cordova-plugin-stepcounter
+ionic cordova plugin add cordova-plugin-gyroscope
+ionic cordova plugin add cordova-plugin-health
+ionic cordova plugin add cordova-plugin-camera
+ionic cordova plugin add cordova-plugin-device-motion
+
+npm install --save @ionic-native/camera@4
+npm install --save firebase @angular/fire
+npm install --save angular-progress-bar@latest
+npm install --save @ionic-native/background-mode@4
+npm install --save @ionic-native/sqlite@4
+npm install --save @ionic-native/geolocation@4
+npm install --save @ionic-native/stepcounter@4
+npm install --save @ionic-native/gyroscope@4
+npm install --save @ionic-native/health@4
+npm install --save @ionic-native/device-motion@4
+
+npm install ws@3.3.2 --save-dev --save-exact

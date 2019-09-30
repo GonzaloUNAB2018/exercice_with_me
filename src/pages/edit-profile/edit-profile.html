@@ -1,0 +1,33 @@
+<ion-content padding>
+  <ion-navbar *ngIf="!edit">
+    
+  </ion-navbar>
+  <ion-title align="center" padding-top>Edite sus datos</ion-title>
+  <ion-list *ngIf="usr">
+    <ion-item>
+      <ion-label stacked>Nombre</ion-label>
+      <ion-input type="text" placeholder="{{ (usr|async)?.name }}" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Apellido</ion-label>
+      <ion-input type="text" placeholder="{{ (usr|async)?.surname }}" [(ngModel)]="user.surname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Fecha de nacimiento</ion-label>
+      <ion-datetime displayFormat='DD MM YYYY' placeholder="{{ (usr|async)?.dateBirth }}" [(ngModel)]="user.dateBirth"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Peso (Kg)</ion-label>
+      <ion-input type="number" placeholder="{{ (usr|async)?.weight }}" [(ngModel)]="user.weight"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Altura (Mts)</ion-label>
+      <ion-input type="number" placeholder="{{ (usr|async)?.height }}" [(ngModel)]="user.height"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button round full color="primary" (click)="editUserData()">
+      Editar Datos
+  </button>
+
+</ion-content>

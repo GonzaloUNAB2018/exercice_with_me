@@ -1,0 +1,20 @@
+<ion-content padding>
+  <ion-navbar>
+    <ion-title>Ejercicios Ejecutados</ion-title>
+  </ion-navbar>
+  <ion-list inset>
+    <ion-item-divider *ngIf="steps">Caminata</ion-item-divider>
+    <ion-item *ngFor="let step of steps" padding>
+      <p item-start class="item-text"> {{step.type}}</p> <p item-end class="item-text">{{step.save_time}} </p>
+    </ion-item>
+    <ion-item-divider *ngIf="abss">Abdominales</ion-item-divider>
+    <ion-item *ngFor="let abs of abss" padding>
+      <p item-start class="item-text"> {{abs.type}}</p> <p item-end class="item-text">{{abs.save_time}} </p>
+    </ion-item>
+    <ion-item-divider *ngIf="jumps">Saltos</ion-item-divider>
+    <ion-item *ngFor="let jump of jumps" padding>
+      <p item-start class="item-text"> {{jump.type}}</p> <p item-end class="item-text">{{jump.save_time}} </p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
