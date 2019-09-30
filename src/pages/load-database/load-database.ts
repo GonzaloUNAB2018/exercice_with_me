@@ -3,7 +3,6 @@ import { NavController, NavParams, AlertController, ToastController, LoadingCont
 import { ABSDbProvider } from '../../providers/ABS-db/ABSs-db';
 import { JumpDbProvider } from '../../providers/jump-db/jump-db';
 import { StepsDbProvider } from '../../providers/steps-db/steps-db';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
 import { User } from '../../models/user';
 
@@ -69,7 +68,6 @@ export class LoadDatabasePage {
     public jumpDbService: JumpDbProvider,
     public ABSDbService: ABSDbProvider,
     public stepsDbService: StepsDbProvider,
-    private afDb: AngularFireDatabase,
     ) {
 
       //this.uid = this.afAuth.auth.currentUser.uid;
