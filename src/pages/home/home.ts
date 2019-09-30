@@ -26,39 +26,9 @@ import { ABSDbProvider } from '../../providers/ABS-db/ABSs-db';
 })
 export class HomePage {
 
-  jump_tasks: any[] = [];
-  steps_tasks: any[] = [];
-
-  warning: string;
-
-  supervisionButton : boolean = true;
-  disabled_sa: boolean = false;
-  disabled_ab: boolean = false;
-  disabled_se: boolean = false;
-  disabled_ca: boolean = false;
-
-  public accX:any;
-  public accY:any;
-  public accZ:any;
-
-  n=35;
-
-  n1: number = -3;
-  n2: number = 10;
-  n3: number = 10;
-
-  lat: number;
-  lng: number;
-
-  steps_entries: number = 0;
-  steps_entries_boolean: boolean = false;
-  jumps_entries: number = 0;
-  jumps_entries_boolean: boolean = false;
-
   afUser = this.afAuth.auth.currentUser
   user = {} as User;
   uid: any;
-
   requiereUpdate: any;
   versionApp = '0.1.0.6';
   health : boolean;
@@ -80,7 +50,6 @@ export class HomePage {
     public afProvider: AnguarFireProvider,
     public googleFitProvider: GoogleFitProvider
     ) {
-      
       
   }
 

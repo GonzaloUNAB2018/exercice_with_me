@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../../models/user';
 import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
@@ -19,7 +19,8 @@ export class RegisterPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private afAuth: AngularFireAuth,
-    public afProvider: AnguarFireProvider
+    public afProvider: AnguarFireProvider,
+    public toastCtrl: ToastController
     ) {
   }
 
@@ -42,25 +43,37 @@ export class RegisterPage {
                     });
                     loader.present();
                     this.user.phoneNumber = '+56'+this.user.phone;
-                    this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password).then(user=>{
-                      this.afAuth.auth.currentUser.updateProfile({
-                        displayName: this.user.name
-                      });
-                      if(user){
-                        this.user.uid = this.afAuth.auth.currentUser.uid;
-                        this.afProvider.updateUserData(this.user.uid, this.user);
-                        this.afAuth.auth.signOut().then(()=>{
-                          loader.dismiss();
-                          this.changePage = true;
-                          this.navCtrl.pop();
-                        }).catch(e=>{
-                          loader.dismiss();
-                          this.changePage = true;
-                          this.navCtrl.pop();
-                          alert(e);
-                        })
-                      }
-                    })
+                    setTimeout(() => {
+                      this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password).then(user=>{
+                        this.afAuth.auth.currentUser.updateProfile({
+                          displayName: this.user.name
+                        });
+                        if(user){
+                          this.user.uid = this.afAuth.auth.currentUser.uid;
+                          this.afProvider.updateUserData(this.user.uid, this.user);
+                          this.afAuth.auth.signOut().then(()=>{
+                            loader.dismiss();
+                            setTimeout(() => {
+                              this.changePage = true;
+                              this.navCtrl.pop();
+                            }, 1000);
+                          }).catch(e=>{
+                            loader.dismiss();
+                            setTimeout(() => {
+                              this.changePage = true;
+                              this.navCtrl.pop();
+                              alert(e);
+                            }, 1000);
+                          })
+                        }
+                      }).catch(e=>{
+                        let toast = this.toastCtrl.create({
+                          message: e.code,
+                          duration: 3000
+                        });
+                        toast.present();
+                      })
+                    }, 1000);
                   }else{
                     alert('Contraseñas ingresadas no coinciden. Intente nuevamente');
                   }
