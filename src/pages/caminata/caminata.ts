@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Platform } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Platform, ToastController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { StepsDbProvider } from '../../providers/steps-db/steps-db';
 import { Stepcounter } from '@ionic-native/stepcounter';
@@ -53,11 +53,12 @@ export class CaminataPage {
     private stepcounter: Stepcounter,
     private platform: Platform,
     private backgroundMode: BackgroundMode,
+    public toastCtrl: ToastController
     //private backgroundGeolocation: BackgroundGeolocation
     )
     {
       
-      if(this.platform.is('android')){
+      if(this.platform.is('cordova')){
         this.stepcounter.deviceCanCountSteps().then(data=>{
           if(data){
             this.stepSensorTrue = 'Su teléfono cuenta con sensor contador de pasos';
@@ -65,6 +66,11 @@ export class CaminataPage {
               console.log(toDay)
             });
             this.getGeolocationData();
+            let toast = this.toastCtrl.create({
+              message: 'Obteniendo información de GPS',
+              duration: 2000
+            });
+            toast.present();
           }else{
             alert('Su teléfono no cuenta con sensor para contar los pasos. Aplicación o funcionará correctamente.');
           }
@@ -74,6 +80,7 @@ export class CaminataPage {
     }
 
   ionViewDidLoad() {
+    this.workstarted=true
     this.countDown();
   }
 
@@ -86,12 +93,14 @@ export class CaminataPage {
     };
   }
 
+  ionViewDidLeave(){
+    this.watch.unsubscribe()
+  }
+
   stopAll(){
     this.workstarted = false;
     this.stop();
-    setTimeout(() => {
-      this.navCtrl.popToRoot();
-    }, 1000);
+    
   }
 
   countDown(){
@@ -152,7 +161,7 @@ export class CaminataPage {
   }
 
   start() {
-    this.workstarted = true;
+    //this.workstarted = true;
     this.interval = window.setInterval(() => {
       this.seconds++;
       this.time = this.getTimeFormatted();
@@ -263,9 +272,13 @@ export class CaminataPage {
   loadStopGetData() {
     const loader = this.loadingCtrl.create({
       content: "Finalizando toma de datos...",
-      duration: 500
+      duration: 1000
     });
     loader.present();
+
+    loader.onDidDismiss(()=>{
+        this.navCtrl.pop();
+    })
   }
 
   dateTime(){

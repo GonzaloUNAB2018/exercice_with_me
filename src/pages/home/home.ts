@@ -31,7 +31,7 @@ export class HomePage {
   uid: any = null;
   requiereUpdate: any;
   versionApp = '0.1.0.7';
-  health : boolean = true;
+  health : boolean;
   soliciteHealth : boolean = true;
   updateUserLoader: any;
 
@@ -58,39 +58,59 @@ export class HomePage {
         }else{
           this.requiereUpdateAppFunction()
         }
-      });          
+      });
+
+      console.log('Solicite conectar con google fit: '+this.soliciteHealth);
+      this.uid = this.afUser.uid;
+      this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(usr=>{
+        let user: any = usr;
+        if(user){
+          if(user.revised===undefined||user.revised===0){
+            this.user.lastExerciceLoad = user.lastExerciceLoad;
+            this.user.lastRateSolicitude = user.lastRateSolicitude;
+            if(this.user.lastExerciceLoad===undefined&&this.user.lastRateSolicitude===undefined){
+              this.user.lastExerciceLoad = Math.trunc(Date.now()*0.5);
+              this.user.lastRateSolicitude = new Date(new Date().getTime()).toString();
+              this.afProvider.updateUserData(this.uid, this.user);
+            };
+          }else{
+            this.toast(this.afUser.displayName);
+          };
+          setTimeout(() => {
+            console.log(user.googleFit)
+            if(user.googleFit==='0'||user.googleFit===undefined){
+              this.connectToHealth(this.uid);
+            }else if(user.googleFit==='1'){
+              this.accesToHealth()
+            }else if(user.googleFit==='2'){
+              
+            }
+          }, 2000);
+        /*if(user.googleFit==='1'){
+          this.accesToHealth()
+        };*/
+        };
+      });
+      if(this.platform.is('cordova')&&this.uid!=null){
+        this.createDatabase(this.uid);
+        console.log('Base de datos creada');
+      };    
   }
 
   ionViewDidEnter(){
-    console.log('Solicite conectar con google fit: '+this.soliciteHealth)
-    this.uid = this.afUser.uid;
-    if(this.platform.is('cordova')&&this.uid!=null){
-      if(this.soliciteHealth === true){
-        this.accesToHealth();
-      }
-      this.createDatabase(this.uid);
-      console.log('Accesado a Health y Base de datos creada')
-    };
-    if(this.uid&&this.soliciteHealth===true){
-      this.addDataUser();
-    }    
+    
   }
 
-  addDataUser(){
+  /*addDataUser(){
     this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(user=>{
       let usr : any = user;
       this.user.lastExerciceLoad = usr.lastExerciceLoad;
       this.user.lastRateSolicitude = usr.lastRateSolicitude;
       if(user){
-        this.toast(this.afUser.displayName);
-        if(this.user.lastExerciceLoad===undefined&&this.user.lastRateSolicitude===undefined){
-          this.user.lastExerciceLoad = Math.trunc(Date.now()*0.5);
-          this.user.lastRateSolicitude = new Date(new Date().getTime()).toString();
-          this.afProvider.updateUserData(this.uid, this.user);
-        };
+        
       }
     });  
-  }
+  }*/
 
   alertIfNotData(){
     alert('Rellene los datos')
@@ -105,13 +125,12 @@ export class HomePage {
     .then(available=>{
       if(available){
         this.health=true;
-        this.soliciteHealth = false;
         console.log('Solicite conectar con google fit: '+this.soliciteHealth)
         this.googleFitProvider.getPermissionToHealthData();
         loading.dismiss();
+        this.soliciteHealth = false;
       }else{
         this.health=false;
-        this.soliciteHealth = false;
         console.log('Solicite conectar con google fit: '+this.soliciteHealth)
         var alert = this.alertCtrl.create({
           title: 'No habrá conexión con datos de Google Fit',
@@ -121,6 +140,7 @@ export class HomePage {
               role: 'ok',
               handler(){
                 loading.dismiss();
+                this.soliciteHealth = false;
               }
             }
           ]
@@ -270,6 +290,44 @@ export class HomePage {
     .catch(error =>{
       console.error(error);
     });
+  }
+
+  connectToHealth(uid){
+    let alert = this.alertCtrl.create({
+      title: 'Conexión con Google Fit',
+      message: 'A continuación se iniciará conexiópn con Google Fit',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+            let toast = this.toastCtrl.create({
+              message: 'No se conectará con Google Fit',
+              duration: 5000,
+              showCloseButton: true,
+              closeButtonText: 'Ok'
+            });
+            toast.present();
+            this.user.googleFit = 2;
+            this.user.revised = 1;
+            this.afProvider.updateUserData(uid, this.user);
+          }
+        },
+        {
+          text: 'Conectar',
+          handler: data => {
+            if(this.soliciteHealth === true){
+              this.accesToHealth();
+              this.user.googleFit = 1;
+              this.user.revised = 1;
+              this.afProvider.updateUserData(uid, this.user);
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   

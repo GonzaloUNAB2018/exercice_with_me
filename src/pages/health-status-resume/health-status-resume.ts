@@ -46,13 +46,17 @@ export class HealthStatusResumePage {
       console.log('Conectado con Google Fit: '+this.health);
       if(this.health=true){
         this.presentToast('Obtenga datos desde Google Fit');
-        this.getHealthData();
-        this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(user=>{
-          this.fbUser = user;
-        })
+        setTimeout(() => {  
+          this.getHealthData();
+          this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(user=>{
+            this.fbUser = user;
+          })
+        }, 1000);
       }else{
         this.presentToast('No puede obtener datos desde Google Fit');
-        this.navCtrl.pop();
+        setTimeout(() => {
+          this.navCtrl.pop();
+        }, 1000);
       }
   }
 
