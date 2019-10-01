@@ -52,7 +52,7 @@ export class HealthStatusResumePage {
             this.fbUser = user;
           })
         }, 1000);
-      }else{
+      }else if(this.health=false||this.health===undefined){
         this.presentToast('No puede obtener datos desde Google Fit');
         setTimeout(() => {
           this.navCtrl.pop();
