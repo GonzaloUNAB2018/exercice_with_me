@@ -30,7 +30,7 @@ export class HomePage {
   user = {} as User;
   uid: any = null;
   requiereUpdate: any;
-  versionApp = '0.1.0.8';
+  versionApp = '0.1.0.9';
   health : boolean = true;
   soliciteHealth : boolean = true;
   updateUserLoader: any;
@@ -53,7 +53,7 @@ export class HomePage {
     ) {
       this.afProvider.requiereUpdateApp().valueChanges().subscribe(requiereUpdate=>{
         this.requiereUpdate = requiereUpdate;
-        if(this.requiereUpdate.requiere==='0.1.0.8'){
+        if(this.requiereUpdate.requiere==='0.1.0.9'){
           console.log('No requiere actualizar');
         }else{
           this.requiereUpdateAppFunction()
@@ -264,7 +264,7 @@ export class HomePage {
         {
           text: 'OK',
           handler: () => {
-            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/ewm_1_0_8_debug_testing.apk");
+            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/ewm_1_0_9_debug_testing.apk");
           }
         }
       ]

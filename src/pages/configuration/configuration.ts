@@ -81,8 +81,8 @@ export class ConfigurationPage {
               message: 'Deshabilitado por periodo de pruebas',
               duration: 3000
             });
-            toast.present();
-            //this.deleteDatabase(this.uid);
+            //toast.present();
+            this.deleteDatabase(this.uid);
           }
         }
       ]
