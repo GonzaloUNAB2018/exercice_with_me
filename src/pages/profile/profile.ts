@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
 import { User } from '../../models/user';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EditProfilePage } from '../edit-profile/edit-profile';
@@ -27,10 +26,9 @@ export class ProfilePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public afProvider: AnguarFireProvider,
-    public afAuth: AngularFireAuth,
     public camera: Camera,
     ) {
-      this.uid = this.afAuth.auth.currentUser.uid
+      this.uid = navParams.get('uid')
       this.userFromFB = this.afProvider.getUserInfo(this.uid).valueChanges();
       this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(user=>{
         this.usr = user;

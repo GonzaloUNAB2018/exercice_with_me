@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../../models/user';
-import { HomePage } from '../home/home';
+import { WaitingPage } from '../waiting/waiting';
 
 @Component({
   selector: 'page-login',
@@ -36,7 +36,7 @@ export class LoginPage {
       this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password).then(user=>{
         if(user){
           loader.dismiss();
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(WaitingPage);
         }
       }).catch(error=>{
         loader.dismiss();

@@ -106,11 +106,13 @@ export class LoadDatabasePage {
     .then(ABS_tasks => {
       this.ABS_tasks = ABS_tasks;
       if(this.ABS_tasks.length!=0){
+        this.okLoad1 = true;
         this.ABSs_entries = this.ABS_tasks.length;
         console.log(this.ABS_tasks);
         this.ABSs_entries_boolean = true;
         this.openABS1 = true
       }else{
+        this.okLoad1 = false;
         console.log('No existen datos de abdominales por sincronizar');
         this.ABSs_entries = 0;
         this.ABSs_entries_boolean = false;
@@ -127,11 +129,13 @@ export class LoadDatabasePage {
     .then(steps_tasks => {
       this.steps_tasks = steps_tasks;
       if(this.steps_tasks.length!=0){
+        this.okLoad2 = true;
         console.log(this.steps_tasks)
         this.steps_entries = this.steps_tasks.length
         this.steps_entries_boolean = true;
         this.openSteps1 = true;
       }else{
+        this.okLoad2 = false;
         console.log('No existen datos de caminata por sincronizar');
         this.steps_entries = 0;
         this.steps_entries_boolean = false;
@@ -148,11 +152,13 @@ export class LoadDatabasePage {
     .then(jump_tasks => {
       this.jump_tasks = jump_tasks;
       if(this.jump_tasks.length!=0){
+        this.okLoad3 = true;
         console.log(this.jump_tasks)
         this.jumps_entries = this.jump_tasks.length;
         this.jumps_entries_boolean = true;
         this.openJumps1 = true
       }else{
+        this.okLoad3 = false;
         console.log('No existen datos de saltos por sincronizar');
         this.jumps_entries = 0;
         this.jumps_entries_boolean = false;
@@ -177,7 +183,8 @@ export class LoadDatabasePage {
           role: 'cancel',
           handler: () => {
             this.cancelToast();
-            console.log('Se cancela borrado');
+            console.log('Se cancela carga');
+            this.navCtrl.pop();
           }
         },
         {
@@ -238,8 +245,8 @@ export class LoadDatabasePage {
         loadSyncData.dismiss();
       }  
     }, 10);
-    if(this.steps_tasks.length!=0||this.ABS_tasks.length!=0||this.jump_tasks.length!=0){
-
+    //if(this.steps_tasks.length!=0||this.ABS_tasks.length!=0||this.jump_tasks.length!=0){
+    if(this.okLoad1===true||this.okLoad2===true||this.okLoad3===true){
       for(var s = 0;s<this.steps_entries;s++) {
         console.log(this.steps_tasks[s].eid);
         let exer = this.steps_tasks[s].eid;
@@ -296,9 +303,12 @@ export class LoadDatabasePage {
         this.afProvider.updateABSInfo(this.uid, ABSinfo);
       }
     }else{
-      alert('Nada que sincronizar');
-      loadSyncData.dismiss();
-      this.navCtrl.pop();
+      width = 100;
+      this.noLoadToast();
+      setTimeout(() => {
+        this.navCtrl.pop();
+        loadSyncData.dismiss();
+      }, 1000);
     }
   }
 
@@ -333,12 +343,8 @@ export class LoadDatabasePage {
   noLoadToast() {
     const toast = this.toastCtrl.create({
       message: 'Nada que sincronizar',
-      duration: 1000,
+      duration: 2000,
       position: 'bottom'
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
     });
 
     toast.present()

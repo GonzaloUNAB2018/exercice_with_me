@@ -4,6 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../../models/user';
 import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
 import { validate } from 'rut.js';
+import { InitialPage } from '../initial/initial';
+import { WaitingPage } from '../waiting/waiting';
 
 @Component({
   selector: 'page-register',
@@ -12,7 +14,6 @@ import { validate } from 'rut.js';
 export class RegisterPage {
 
   user = {} as User;
-  changePage: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -37,36 +38,36 @@ export class RegisterPage {
               if(this.user.run){
                 if(validate(this.user.run)){
                   if(this.user.password === this.user.confirm_password){
-                    this.changePage = false;
                     const loader = this.loadingCtrl.create({
                       content: "Registrando Usuario...",
                     });
                     loader.present();
                     this.user.phoneNumber = '+56'+this.user.phone;
                     setTimeout(() => {
-                      this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password).then(user=>{
-                        this.afAuth.auth.currentUser.updateProfile({
-                          displayName: this.user.name
-                        });
+                      this.afAuth.auth.createUserWithEmailAndPassword(
+                        this.user.email,
+                        this.user.password
+                      )
+                      .then(user=>{
                         if(user){
                           this.user.uid = this.afAuth.auth.currentUser.uid;
                           this.afProvider.updateUserData(this.user.uid, this.user);
-                          this.afAuth.auth.signOut().then(()=>{
-                            loader.dismiss();
-                            setTimeout(() => {
-                              this.changePage = true;
-                              this.navCtrl.pop();
-                            }, 1000);
-                          }).catch(e=>{
-                            loader.dismiss();
-                            setTimeout(() => {
-                              this.changePage = true;
-                              this.navCtrl.pop();
-                              alert(e);
-                            }, 1000);
+                          this.afAuth.auth.currentUser.updateProfile({
+                            displayName : this.user.name
                           })
+                            loader.dismiss().then(()=>{
+                            this.navCtrl.setRoot(WaitingPage);
+                            let toast = this.toastCtrl.create({
+                              message: 'Iniciando la aplicación por favor espere',
+                              duration: 2000,
+                            });
+                            toast.present();
+                          });
                         }
-                      }).catch(e=>{
+                      }
+                      )
+                      .catch(e=>{
+                        this.navCtrl.setRoot(InitialPage);
                         let toast = this.toastCtrl.create({
                           message: e.code,
                           duration: 3000

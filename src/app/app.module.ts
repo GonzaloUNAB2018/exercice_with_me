@@ -49,8 +49,7 @@ import { HomePage } from '../pages/home/home';
 import { ExercisePage } from '../pages/exercise/exercise';
 import { ExercisesPage } from '../pages/exercises/exercises';
 import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-password';
-
-
+import { WaitingPage } from '../pages/waiting/waiting'
 
 @NgModule({
   declarations: [
@@ -72,6 +71,7 @@ import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-passwo
     ExercisePage,
     ExercisesPage,
     RecoveryPasswordPage,
+    WaitingPage
   ],
   imports: [
     HttpClientModule,
@@ -102,6 +102,7 @@ import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-passwo
     ExercisePage,
     ExercisesPage,
     RecoveryPasswordPage,
+    WaitingPage
   ],
   providers: [
     StatusBar,

@@ -28,10 +28,11 @@ export class HomePage {
 
   afUser = this.afAuth.auth.currentUser
   user = {} as User;
-  uid: any;
+  uid: any = null;
   requiereUpdate: any;
-  versionApp = '0.1.0.6';
-  health : boolean;
+  versionApp = '0.1.0.7';
+  health : boolean = true;
+  soliciteHealth : boolean = true;
   updateUserLoader: any;
 
   constructor(
@@ -50,27 +51,33 @@ export class HomePage {
     public afProvider: AnguarFireProvider,
     public googleFitProvider: GoogleFitProvider
     ) {
-      
+      this.afProvider.requiereUpdateApp().valueChanges().subscribe(requiereUpdate=>{
+        this.requiereUpdate = requiereUpdate;
+        if(this.requiereUpdate.requiere==='0.1.0.7'){
+          console.log('No requiere actualizar');
+        }else{
+          this.requiereUpdateAppFunction()
+        }
+      });          
   }
 
   ionViewDidEnter(){
-    if(this.platform.is('cordova')){
-      this.accesToHealth();
-      this.createDatabase(this.afUser.uid);
-    };
-    this.addDataUser();
-    this.afProvider.requiereUpdateApp().valueChanges().subscribe(requiereUpdate=>{
-      this.requiereUpdate = requiereUpdate;
-      if(this.requiereUpdate.requiere==='0.1.0.6'){
-        console.log('No requiere actualizar');
-      }else{
-        this.requiereUpdateAppFunction()
+    console.log('Solicite conectar con google fit: '+this.soliciteHealth)
+    this.uid = this.afUser.uid;
+    if(this.platform.is('cordova')&&this.uid!=null){
+      if(this.soliciteHealth === true){
+        this.accesToHealth();
       }
-    });    
+      this.createDatabase(this.uid);
+      console.log('Accesado a Health y Base de datos creada')
+    };
+    if(this.uid&&this.soliciteHealth===true){
+      this.addDataUser();
+    }    
   }
 
   addDataUser(){
-    this.afProvider.getUserInfo(this.afUser.uid).valueChanges().subscribe(user=>{
+    this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(user=>{
       let usr : any = user;
       this.user.lastExerciceLoad = usr.lastExerciceLoad;
       this.user.lastRateSolicitude = usr.lastRateSolicitude;
@@ -98,10 +105,14 @@ export class HomePage {
     .then(available=>{
       if(available){
         this.health=true;
+        this.soliciteHealth = false;
+        console.log('Solicite conectar con google fit: '+this.soliciteHealth)
         this.googleFitProvider.getPermissionToHealthData();
         loading.dismiss();
       }else{
         this.health=false;
+        this.soliciteHealth = false;
+        console.log('Solicite conectar con google fit: '+this.soliciteHealth)
         var alert = this.alertCtrl.create({
           title: 'No habrá conexión con datos de Google Fit',
           buttons: [
@@ -119,6 +130,9 @@ export class HomePage {
     })
     .then(()=>{
       console.log(this.health)
+    }).catch(e=>{
+      alert(e.code);
+      loading.dismiss();
     })
   }
 
@@ -139,9 +153,6 @@ export class HomePage {
           text: 'OK',
           handler: () => {
             this.loadLogout();
-            this.afAuth.auth.signOut().then(()=>{
-              this.navCtrl.setRoot(InitialPage)
-            })
           }
         }
       ]
@@ -161,13 +172,13 @@ export class HomePage {
   }
 
   toOptionPage(){
-    this.navCtrl.push(ConfigurationPage)
+    this.navCtrl.push(ConfigurationPage, {uid: this.uid})
   }
 
   toProfilePage(){
     //alert('Página de Perfil de Usuario en desarrollo')
     //this.navCtrl.push(ProfilePage, {uid: this.uid, nickName: this.user.nickName})
-    this.navCtrl.push(ProfilePage);
+    this.navCtrl.push(ProfilePage, {uid: this.uid});
   }
 
   toExercicesList(){
@@ -201,9 +212,15 @@ export class HomePage {
   loadLogout() {
     const loader = this.loadingCtrl.create({
       content: "Cerrando Sesión",
-      duration: 2000
     });
     loader.present();
+    setTimeout(() => {
+      this.afAuth.auth.signOut().then(()=>{
+        this.navCtrl.setRoot(InitialPage);
+        loader.dismiss();
+      })
+    }, 1000);
+    
   }
 
 
@@ -227,7 +244,7 @@ export class HomePage {
         {
           text: 'OK',
           handler: () => {
-            window.open("https://github.com/GonzaloUNAB2018/healthy/tree/master/apk");
+            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK");
           }
         }
       ]

@@ -5,7 +5,6 @@ import { StepsDbProvider } from '../../providers/steps-db/steps-db';
 import { JumpDbProvider } from '../../providers/jump-db/jump-db';
 import { ABSDbProvider } from '../../providers/ABS-db/ABSs-db';
 import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../../models/user';
 
 @Component({
@@ -14,7 +13,7 @@ import { User } from '../../models/user';
 })
 export class ConfigurationPage {
 
-  uid = this.afAuth.auth.currentUser.uid;
+  uid : any;
   rates : number = 0;
   user = {} as User;
   loadingObjectDeleteRates: any;
@@ -30,20 +29,20 @@ export class ConfigurationPage {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public afService: AnguarFireProvider,
-    private afAuth: AngularFireAuth
     ) {
-      
-    this.afService.getUserHearthAllRates(this.uid).valueChanges().subscribe(rts=>{
-      if(rts){
-        this.rates = rts.length;
-        if(this.rates === undefined){
-          this.rates = 0;
-        }else{
+    
+      this.uid = navParams.get('uid');
+      this.afService.getUserHearthAllRates(this.uid).valueChanges().subscribe(rts=>{
+        if(rts){
           this.rates = rts.length;
+          if(this.rates === undefined){
+            this.rates = 0;
+          }else{
+            this.rates = rts.length;
+          }
         }
-      }
-    })
-  }
+      })
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfigurationPage');
@@ -78,7 +77,12 @@ export class ConfigurationPage {
         {
           text: 'OK',
           handler: () => {
-            this.deleteDatabase(this.uid);
+            let toast = this.toastCtrl.create({
+              message: 'Deshabilitado por periodo de pruebas',
+              duration: 3000
+            });
+            toast.present();
+            //this.deleteDatabase(this.uid);
           }
         }
       ]
@@ -143,8 +147,12 @@ export class ConfigurationPage {
   }
 
   deleteRates(){
-    
-    this.loadingDeleteRates();
+    let toast = this.toastCtrl.create({
+      message: 'Deshabilitado por periodo de pruebas',
+      duration: 3000
+    });
+    toast.present();
+    /*this.loadingDeleteRates();
     setTimeout(() => {
       this.user.lastRateSolicitude = new Date(new Date().getTime() - 30 * 24 * 60 * 60 * 1000).toString();
       this.afService.deleteRates(this.uid);
@@ -164,7 +172,7 @@ export class ConfigurationPage {
           }
         })
       }, 500);
-    }, 1000);
+    }, 1000);*/
   }
  
 }
