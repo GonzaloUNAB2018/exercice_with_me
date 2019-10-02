@@ -89,12 +89,9 @@ export class CaminataPage {
     if(this.workstarted===true){
       return false;
     }else if(this.workstarted===false){
+      this.watch.unsubscribe();
       return true;
     };
-  }
-
-  ionViewDidLeave(){
-    this.watch.unsubscribe()
   }
 
   stopAll(){
@@ -221,7 +218,7 @@ export class CaminataPage {
       this.stopSteps();
       this.stopNotify();
       //this.backgroundGeolocation.stop();
-      this.watch.unsubscribe();
+      
     }
   }
 

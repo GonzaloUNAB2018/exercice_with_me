@@ -4,16 +4,16 @@
   </ion-navbar>
   <ion-list inset>
     <ion-item-divider *ngIf="steps">Caminata</ion-item-divider>
-    <ion-item *ngFor="let step of steps" padding>
-      <p item-start class="item-text"> {{step.type}}</p> <p item-end class="item-text">{{step.save_time}} </p>
+    <ion-item *ngFor="let step of steps; let fb_step of " padding>
+      <ion-icon item-start name="cloud-circle" class="item-text" color="{{color_step_circle}}"></ion-icon><p item-start class="item-text"> {{step.type}}</p> <p item-end class="item-text">{{step.save_time}} </p>
     </ion-item>
     <ion-item-divider *ngIf="abss">Abdominales</ion-item-divider>
     <ion-item *ngFor="let abs of abss" padding>
-      <p item-start class="item-text"> {{abs.type}}</p> <p item-end class="item-text">{{abs.save_time}} </p>
+      <ion-icon item-start name="cloud-circle" class="item-text"></ion-icon><p item-start class="item-text"> {{abs.type}}</p> <p item-end class="item-text">{{abs.save_time}} </p>
     </ion-item>
     <ion-item-divider *ngIf="jumps">Saltos</ion-item-divider>
     <ion-item *ngFor="let jump of jumps" padding>
-      <p item-start class="item-text"> {{jump.type}}</p> <p item-end class="item-text">{{jump.save_time}} </p>
+      <ion-icon item-start name="cloud-circle" class="item-text"></ion-icon><p item-start class="item-text"> {{jump.type}}</p> <p item-end class="item-text">{{jump.save_time}} </p>
     </ion-item>
   </ion-list>
 

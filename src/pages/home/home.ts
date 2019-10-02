@@ -30,7 +30,7 @@ export class HomePage {
   user = {} as User;
   uid: any = null;
   requiereUpdate: any;
-  versionApp = '0.1.0.9';
+  versionApp = '0.1.0.9.5';
   health : boolean = true;
   soliciteHealth : boolean = true;
   updateUserLoader: any;
@@ -53,7 +53,7 @@ export class HomePage {
     ) {
       this.afProvider.requiereUpdateApp().valueChanges().subscribe(requiereUpdate=>{
         this.requiereUpdate = requiereUpdate;
-        if(this.requiereUpdate.requiere==='0.1.0.9'){
+        if(this.requiereUpdate.requiere==='0.1.0.9.5'){
           console.log('No requiere actualizar');
         }else{
           this.requiereUpdateAppFunction()
@@ -68,8 +68,10 @@ export class HomePage {
           if(user.revised===undefined||user.revised===0){
             this.user.lastExerciceLoad = user.lastExerciceLoad;
             this.user.lastRateSolicitude = user.lastRateSolicitude;
-            if(this.user.lastExerciceLoad===undefined&&this.user.lastRateSolicitude===undefined){
-              this.user.lastExerciceLoad = Math.trunc(Date.now()*0.5);
+            if(this.user.lastExerciceLoad===undefined||this.user.lastRateSolicitude===undefined){
+              if(this.user.lastExerciceLoad < Date.now()*0.5){
+                this.user.lastExerciceLoad = Date.now();
+              };
               this.user.lastRateSolicitude = new Date(new Date().getTime()).toString();
               this.afProvider.updateUserData(this.uid, this.user);
             };
@@ -264,7 +266,7 @@ export class HomePage {
         {
           text: 'OK',
           handler: () => {
-            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/ewm_1_0_9_debug_testing.apk");
+            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/ewm_1_0_9_5_debug_testing.apk");
           }
         }
       ]

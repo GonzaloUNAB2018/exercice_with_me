@@ -3,6 +3,7 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 import { JumpDbProvider } from '../../providers/jump-db/jump-db';
 import { ABSDbProvider } from '../../providers/ABS-db/ABSs-db';
 import { StepsDbProvider } from '../../providers/steps-db/steps-db';
+import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
 
 @Component({
   selector: 'page-exercises',
@@ -30,6 +31,10 @@ export class ExercisesPage {
   steps: any[];
   abss: any[];
   jumps: any[];
+  fb_steps: any[];
+  fb_abss: any[];
+  fb_jumps: any[];
+  color_step_circle: string;
 
   constructor(
     public navCtrl: NavController,
@@ -38,6 +43,7 @@ export class ExercisesPage {
     public jumpDbService: JumpDbProvider,
     public ABSDbService: ABSDbProvider,
     public stepsDbService: StepsDbProvider,
+    public afProvider: AnguarFireProvider
     ) {
       this.uid = navParams.get('uid')
   }
@@ -90,6 +96,13 @@ export class ExercisesPage {
         this.ABSs_entries_boolean = false;
         this.openABS2=true;
       }
+    }).then(()=>{
+      this.afProvider.getABSsList(this.uid).valueChanges().subscribe(list=>{
+        if(list){
+          this.fb_abss = list;
+          console.log(this.fb_abss)
+        }
+      });
     })
     .catch( error => {
       console.error( error );
@@ -112,12 +125,35 @@ export class ExercisesPage {
         this.steps_entries = this.steps_tasks.length;
         this.steps_entries_boolean = true;
         this.openSteps1 = true;
+        this.afProvider.getStepsList(this.uid).valueChanges().subscribe(list=>{
+          if(list){
+            this.fb_steps = list;
+            console.log(this.fb_steps);
+            for (var i = 0; i <= this.steps.length; i++){
+              console.log(this.fb_steps[i].eid, this.steps[i].eid);
+              if (i<=this.fb_steps.length){
+                this.color_step_circle = 'primary'
+              }
+              else if(i > this.fb_steps.length){
+                this.color_step_circle = 'danger'
+                break
+              }
+              /*if(this.fb_steps[i].eid = this.steps[i].eid){
+                this.color_step_circle = 'primary';
+              }else{
+                this.color_step_circle = 'danger'
+              }*/
+            }
+          }
+        });
       }else{
         console.log('No existen datos de caminata por sincronizar');
         this.steps_entries = 0;
         this.steps_entries_boolean = false;
         this.openSteps2 = true;
       }
+    }).then(()=>{
+      
     })
     .catch( error => {
       console.error( error );
@@ -146,6 +182,13 @@ export class ExercisesPage {
         this.jumps_entries_boolean = false;
         this.openJumps2 = true
       }
+    }).then(()=>{
+      this.afProvider.getJumpsList(this.uid).valueChanges().subscribe(list=>{
+        if(list){
+          this.fb_jumps = list;
+          console.log(this.fb_jumps)
+        }
+      });
     })
     .catch( error => {
       console.error( error );
