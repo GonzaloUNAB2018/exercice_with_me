@@ -266,7 +266,7 @@ export class HomePage {
         {
           text: 'OK',
           handler: () => {
-            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/ewm_1_0_9_5_debug_testing.apk");
+            window.open("https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK");
           }
         }
       ]
