@@ -30,7 +30,7 @@ export class HomePage {
   user = {} as User;
   uid: any = null;
   requiereUpdate: any;
-  versionApp = '0.1.0.9.5';
+  versionApp = '0.1.1.0';
   health : boolean = true;
   soliciteHealth : boolean = true;
   updateUserLoader: any;
@@ -53,7 +53,7 @@ export class HomePage {
     ) {
       this.afProvider.requiereUpdateApp().valueChanges().subscribe(requiereUpdate=>{
         this.requiereUpdate = requiereUpdate;
-        if(this.requiereUpdate.requiere==='0.1.0.9.5'){
+        if(this.requiereUpdate.requiere==='0.1.1.0'){
           console.log('No requiere actualizar');
         }else{
           this.requiereUpdateAppFunction()

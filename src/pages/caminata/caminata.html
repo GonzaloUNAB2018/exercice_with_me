@@ -11,7 +11,9 @@
     
     <p class="text" *ngIf="!cdown_ok"> Contador de pasos: </p>
     <p class="steps" *ngIf="!cdown_ok">{{steps}}</p>
+    <p class="text">{{alt}}</p>
     <!--p class="steps" *ngIf="!cdown_ok">{{speed}}</p-->
+    <p class="text"> {{latlng}} </p>
     <p class="chrono" *ngIf="cdown_ok"> {{cdown_ss}} </p>
     <p class="chrono" *ngIf="!cdown_ok" id="time">00:00</p>
   </div>
