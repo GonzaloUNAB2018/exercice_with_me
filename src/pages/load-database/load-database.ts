@@ -58,6 +58,22 @@ export class LoadDatabasePage {
 
   public workstarted: boolean = false;
 
+  concat_exercices: any[]=[];
+  suma : number = 0;
+
+  stepsinfo = {
+    tipo: 'Caminata',
+    id: '001'
+  }
+  jumpsinfo = {
+    tipo: 'Saltos',
+    id: '002'
+  }
+   ABSinfo = {
+    tipo: 'Abdominales',
+    id: '003'
+  }
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -96,14 +112,15 @@ export class LoadDatabasePage {
   }
 
   getAll(){
-    this.getABS();
-    this.getJumps();
-    this.getSteps();
+    
   }
 
   getABS(){
-    this.ABSDbService.getAll()
-    .then(ABS_tasks => {
+    this.ABSDbService.getAll().then(ABSs=>{
+      this.ABS_tasks = ABSs;
+      console.log(this.ABS_tasks);
+    })
+    /*.then(ABSS => {
       this.ABS_tasks = ABS_tasks;
       if(this.ABS_tasks.length!=0){
         this.okLoad1 = true;
@@ -121,12 +138,16 @@ export class LoadDatabasePage {
     })
     .catch( error => {
       console.error( error );
-    });
+    });*/
   }
 
   getSteps(){
-    this.stepsDbService.getAll()
-    .then(steps_tasks => {
+    this.stepsDbService.getAll().then(steps=>{
+      this.steps_tasks = steps;
+      console.log(this.steps_tasks);
+    })
+    
+    /*.then(steps_tasks => {
       this.steps_tasks = steps_tasks;
       if(this.steps_tasks.length!=0){
         this.okLoad2 = true;
@@ -144,12 +165,15 @@ export class LoadDatabasePage {
     })
     .catch( error => {
       console.error( error );
-    });
+    });*/
   }
 
   getJumps(){
-    this.jumpDbService.getAll()
-    .then(jump_tasks => {
+    this.jumpDbService.getAll().then(jumps=>{
+      this.jump_tasks = jumps;
+      console.log(this.jump_tasks);
+    })
+    /*.then(jump_tasks => {
       this.jump_tasks = jump_tasks;
       if(this.jump_tasks.length!=0){
         this.okLoad3 = true;
@@ -167,8 +191,10 @@ export class LoadDatabasePage {
     })
     .catch( error => {
       console.error( error );
-    });
+    });*/
   }
+
+  
 
   
 
@@ -222,10 +248,109 @@ export class LoadDatabasePage {
   }
 
   okLoadToDatabase(){
+    let load = this.loadingCtrl.create({
+      content: 'Calculando...'
+    });
+    load.present();
     this.workstarted = true;
-    this.user.lastExerciceLoad = Math.trunc(Date.now()*0.5);
-    this.afProvider.updateUserData(this.uid, this.user);
-    let loadSyncData = this.loadingCtrl.create({
+    this.getABS();
+    this.getJumps();
+    this.getSteps();
+    setTimeout(() => {
+      this.suma = this.ABS_tasks.length+this.steps_tasks.length+this.jump_tasks.length;
+    console.log(this.suma);  
+    if(this.suma >= 0){
+      load.dismiss();
+      this.concat_exercices = this.ABS_tasks.concat(this.steps_tasks.concat(this.jump_tasks));
+      console.log(this.concat_exercices);
+        let load_ = this.loadingCtrl.create({
+          content: 'Cargando Datos'
+        });
+        load_.present();
+        console.log(this.user.lastExerciceLoad)
+        for(var n = 0 ; n <= this.suma ; n++){
+          let m : number = 0;
+          if(n<this.suma){
+            let exDay = {
+              eid : this.concat_exercices[n].eid,
+              type : this.concat_exercices[n].type,
+              save_time : this.concat_exercices[n].save_time,
+            };
+            let ex = {
+              id : null,
+              type : exDay.type
+            }
+            
+            if(ex.type === 'Caminata'){
+              ex.id = '001'
+            }else if(ex.type === 'Saltos'){
+              ex.id = '002'
+            }else if(ex.type === 'Abdominales'){
+              ex.id = '003'
+            }
+            if(this.concat_exercices[n].id > this.user.lastExerciceLoad){
+              this.afProvider.updateExercices(this.uid, ex, exDay, this.concat_exercices[n]);
+            }/*else{
+              this.user.lastExerciceLoad = Date.now();
+              this.afProvider.updateUserData(this.uid, this.user);
+              console.log('finish')
+              load_.dismiss();
+              this.workstarted = false;
+              let alert = this.alertCtrl.create({
+                message: 'No hay datos por cargar',
+                buttons: [
+                  {
+                    text: 'Ok',
+                    handler: data => {
+                    }
+                  }
+                ]
+              });
+              alert.present();
+
+              alert.onDidDismiss(()=>{
+                this.navCtrl.pop();
+              })
+              break;
+            }*/
+            console.log(n);
+          }else{
+            console.log(n + ' datos revisados');
+            console.log(m + ' datos no cargados');
+            this.user.lastExerciceLoad = Date.now();
+            this.afProvider.updateUserData(this.uid, this.user);
+            console.log('finish')
+            load_.dismiss();
+            this.workstarted = false;
+            let toast = this.toastCtrl.create({
+              message: 'Carga finalizada',
+              duration: 2000
+            });
+            toast.present();
+
+            toast.onDidDismiss(()=>{
+              this.navCtrl.pop();
+            })
+          }
+        }
+      
+    
+    }else{
+      this.workstarted = false;
+      let load = this.loadingCtrl.create({
+        content: 'Sin sincronizar',
+        duration: 1000,
+      });
+      load.present()
+      load.onDidDismiss(() => {
+        this.navCtrl.pop();
+      });
+
+    }
+    
+    
+
+    /*let loadSyncData = this.loadingCtrl.create({
       content: 'Calculando datos...',
     }); 
     loadSyncData.present();
@@ -278,29 +403,7 @@ export class LoadDatabasePage {
       if(this.steps_tasks.length===0){
 
       }else{
-        var stepsinfo = {
-          tipo: 'Caminata',
-          id: '001'
-        }
-        this.afProvider.updateStepsInfo(this.uid, stepsinfo);
-      }
-      if(this.jump_tasks.length===0){
-
-      }else{
-        var jumpsinfo = {
-          tipo: 'Saltos',
-          id: '002'
-        }
-        this.afProvider.updateJumpInfo(this.uid, jumpsinfo);
-      }
-      if(this.ABS_tasks.length===0){
-
-      }else{
-        var ABSinfo = {
-          tipo: 'Abdominales',
-          id: '003'
-        }
-        this.afProvider.updateABSInfo(this.uid, ABSinfo);
+       
       }
     }else{
       width = 100;
@@ -309,7 +412,10 @@ export class LoadDatabasePage {
         this.navCtrl.pop();
         loadSyncData.dismiss();
       }, 1000);
-    }
+    }*/
+    
+    
+    }, 3000);
   }
 
   cancelToast() {

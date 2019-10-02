@@ -20,5 +20,7 @@ export class User {
     lastRateSolicitude: string; //ULTIMA FECHA DE ACTUALIZACIÓN DE DATOS DESDE GOOGLE FIT
     lastExerciceLoad: number;
     sex: string;
+    googleFit: number;
+    revised: number;
 
 }

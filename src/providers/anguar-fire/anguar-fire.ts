@@ -33,31 +33,38 @@ export class AnguarFireProvider {
   }
 
   public deleteDataBase(uid){
-    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/').remove();
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/').remove();
   }
 
   updateJumpInfo(uid, info){
-    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Saltos/'+info.id).update(info);
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+info.id).update(info);
   }
 
   updateABSInfo(uid, info){
-    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Abdominales/'+info.id).update(info);
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+info.id).update(info);
   }
 
   updateStepsInfo(uid, info){
-    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Caminata/'+info.id).update(info);
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+info.id).update(info);
   }
 
-  updateJumpData(uid, info){
-    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Saltos/Datos/'+info.eid+'/'+info.id).update(info);
+  updateExercices(uid, ex, exDay, data){
+    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id).update(ex);
+    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id+'/Grupos/'+exDay.eid).update(exDay);
+    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id+'/Grupos/'+exDay.eid+'/Datos/'+data.id).update(data);
+
   }
 
-  updateABSData(uid, info){
-    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Abdominales/Datos/'+info.eid+'/'+info.id).update(info);
+  updateJumpData(uid, ex, data){
+    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id).update(ex);
   }
 
-  updateStepsData(uid, info){
-    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Caminata/Datos/'+info.eid+'/'+info.id).update(info);
+  updateABSData(uid, ex, data){
+    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id).update(ex);
+  }
+
+  updateStepsData(uid, ex, data){
+    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id).update(ex);
   }
 
   public requiereUpdateApp(){
