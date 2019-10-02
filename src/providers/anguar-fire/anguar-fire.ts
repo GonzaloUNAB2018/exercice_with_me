@@ -20,16 +20,16 @@ export class AnguarFireProvider {
     console.log('Hello AnguarFireProvider Provider');
   }
 
-  public getSteps(uid){
-    return this.afDb.list('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Caminata/Datos/');
+  public getStepsList(uid){
+    return this.afDb.list('Ejercicios_Pacientes/Ejercicios/'+uid+'/001/Grupos/');
   }
 
-  public getABSs(uid){
-    return this.afDb.list('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Abdominales/Datos/');
+  public getABSsList(uid){
+    return this.afDb.list('Ejercicios_Pacientes/Ejercicios/'+uid+'/003/Grupos/');
   }
 
-  public getJumps(uid){
-    return this.afDb.list('Ejercicios_Pacientes/Ejercicios/'+uid+'/Ejercicios/Saltos/Datos/');
+  public getJumpsList(uid){
+    return this.afDb.list('Ejercicios_Pacientes/Ejercicios/'+uid+'/002/Grupos/');
   }
 
   public deleteDataBase(uid){
