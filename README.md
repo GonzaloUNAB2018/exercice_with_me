@@ -86,14 +86,14 @@
     <code>ionic cordova run android</code>
     <h3 id="three">Modo de empleo</h3>
     <h4>Pantalla de inicio donde se observa "Inicio de Sesión", "Registro" y "Recuperación de contraseña"</h4>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true">
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true" width="200px">
     <h4>Registro con todos los datos</h4>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_002.jpeg?raw=true">
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_002.jpeg?raw=true" width="200px">
     <h4>Inicie sesión</h4>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_003.jpeg?raw=true">
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_003.jpeg?raw=true" width="200px">
     <h4>Si es la primera vez que inicia le dará conexión al README del repositorio en GitHub</h4>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_004.jpeg?raw=true">
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_004.jpeg?raw=true" width="200px">
     <h4>Si no ha conectado con Google Fit antes, solicitará conectar. Si la rechaza, podrá volver a solicitar mas adelante desde configuración (Dicha conexión servirá para obtener mediciones de pulsaciones cardiacas en caso de contar con un Smartband sincronizado a Google Fit)</h4>
-    <img src="">
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_005.jpeg?raw=true" width="200px">
     
 </article>
