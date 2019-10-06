@@ -28,18 +28,27 @@
         que nos ofrecen los smartphones.</p>
     <p>Para ejecutar la aplicación existen 2 métodos:</p>
     <h3 id="one">Método 1: Instalación desde APK</h3>
-    <p>En la carpeta <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/apk">apk</a> 
-        de github se cargan constantemente todas
-        las actualizaciones importantes que se realizan a la aplicación.
-        Solo debe descargarlas a un dispositivo <b>Android</b> versión 6.0 o 
-        superior y ejecutarlo.</p>
-    <p>Ingrese a la aplicación, presionando sobre la versión existente en la carpeta</p>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_01.jpeg?raw=true">
-    <p>Presione "Download"</p>
-    <img src="">
-    <p>Espere la descarga e inicie la instalación presionando "abrir"</p>
-    <img src="">
-    <p>Otorgue permisos para instalar desde fuentes desconocidas a su dispositivo</p>
+    <ol>
+        <li><p>En la carpeta <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK">apk</a> 
+            de github se cargan constantemente todas
+            las actualizaciones importantes que se realizan a la aplicación.
+            Solo debe descargarlas a un dispositivo <b>Android</b> versión 6.0 o 
+            superior y ejecutarlo.</p></li>
+        <li><p>Ingrese a la aplicación, presionando sobre la versión existente en la carpeta</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_01.jpeg?raw=true" width="200px">
+        <li><p>Presione "Download"</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_02.jpeg?raw=true" width="200px">
+        <li><p>Espere la descarga e inicie la instalación presionando "abrir"</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_03.jpeg?raw=true" width="200px">
+        <li><p>Instale la aplicación (Otorgue permisos desde fuentes desconocidas si el dispositivo lo solicita)</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_04.jpeg?raw=true" width="200px">
+        <li><p>El dispositivo instalará la aplicación</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_05.jpeg?raw=true" width="200px">
+        <li><p>Una vez instalado, presione "Iniciar"</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_06.jpeg?raw=true" width="200px">
+        <li><p>Se abrirá la aplicación</p></li>
+        <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_07.jpeg?raw=true" width="200px">
+    </ol>
     <br>
     <h3 id="two">Método 2: Descarga del código y ejecución con entorno de desarrollador</h3>
     <p>Éste método es mas complejo ya que es principalmente para quienes puedan ejecutar usando
