@@ -59,7 +59,7 @@
     <ol>
         <li><a href="https://developer.android.com/studio">Android Studio</a></li>
         <li><a href="https://git-scm.com/downloads">Git</a></li>
-        <li><a href="https://nodejs.org/es/download/">Node</a></li>
+        <li><a href="https://nodejs.org/download/release/v8.16.1/node-v8.16.1-x64.msi">Node v8</a></li>
     </ol>
     <p>Una vez estén todas las aplicaciones instaladas, ejecutamos una aplicación de consola
         (yo uso Powershell) desde una carpeta a la que se destine el proyecto, por ejemplo
