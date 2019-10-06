@@ -131,5 +131,5 @@
     <p>Ingrese el email registrado, revise su correo y siga las instrucciones para cambiar la contraseña</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_015.jpeg?raw=true" width="200px">
     <h3 id="four">Contacto</h3>
-    <p>Para consultas o detalles de la aplicación, contacte a <a href="mailto:g.orellanacanales@uandresbello.edu">g.orellanacanales@uandresbello.edu</a>, o al fono +56932514340, vía mensajería, whatsapp o telefónica.</p>
+    <p>Para consultas o detalles de la aplicación contacte a <b>Gonzalo Orellana Canales</b>, email <a href="mailto:g.orellanacanales@uandresbello.edu">g.orellanacanales@uandresbello.edu</a>, o al fono +56932514340, vía mensajería, whatsapp o telefónica.</p>
 </article>
