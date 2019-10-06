@@ -18,7 +18,6 @@ export class ConfigurationPage {
   rates : number = 0;
   user = {} as User;
   loadingObjectDeleteRates: any;
-  googleFitButton: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -35,6 +34,7 @@ export class ConfigurationPage {
     ) {
     
       this.uid = navParams.get('uid');
+      console.log(this.uid);
       this.afService.getUserHearthAllRates(this.uid).valueChanges().subscribe(rts=>{
         if(rts){
           this.rates = rts.length;
@@ -45,17 +45,25 @@ export class ConfigurationPage {
           }
         }
       });
-      this.afService.getUserInfo(this.uid).valueChanges().subscribe(usr=>{
+      /*this.afService.getUserInfo(this.uid).valueChanges().subscribe(usr=>{
         let user: any = usr
         if(user){
-          user.googleFit;
-          if(user.googleFit === '0'||user.googleFit === '2'||user.googleFit === undefined){
+          console.log(user.googleFit);
+          if(user.googleFit === '0'){
             this.googleFitButton = true;
+            console.log(this.googleFitButton);
+          }else if(user.googleFit === '2'){
+            this.googleFitButton = true;
+            console.log(this.googleFitButton);
+          }else if(user.googleFit === undefined){
+            this.googleFitButton = true;
+            console.log(this.googleFitButton);
           }else if(user.googleFit === '1'){
             this.googleFitButton = false;
+            console.log(this.googleFitButton);
           }
         }
-      })
+      })*/
     }
 
   ionViewDidLoad() {
@@ -192,8 +200,15 @@ export class ConfigurationPage {
   initGoogleFit(){
       this.googleFitProvider.getPermissionToHealthData().then(h=>{
         console.log(h);
-        this.user.googleFit = 1;
-        this.afService.updateUserData(this.uid, this.user);
+        if(h===true){
+          this.user.googleFit = 1;
+          this.afService.updateUserData(this.uid, this.user);
+          let toast = this.toastCtrl.create({
+            message: 'Google Fit Conectado',
+            duration: 1000
+          });
+          toast.present();
+        }
       }).catch(e=>{
         alert(e);
         console.log(e)
