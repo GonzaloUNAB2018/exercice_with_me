@@ -24,6 +24,7 @@
                 <li style="text-indent:20px;"><a href="#i">Google Fit</a></li>
                 <li style="text-indent:20px;"><a href="#j">Recuperar Password</a></li>
             </ol>
+        <li><a href="#four">Contacto</a></li>
     </ol>
     <h2>Release Notes</h2>
     <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md" target="_blank">A Release Notes</a></p>
@@ -129,4 +130,6 @@
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true" width="200px">
     <p>Ingrese el email registrado, revise su correo y siga las instrucciones para cambiar la contraseña</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_015.jpeg?raw=true" width="200px">
+    <h3 id="four">Contacto</h3>
+    <p>Para consultas o detalles de la aplicación, contacte a <a href="mailto:g.orellanacanales@uandresbello.edu">g.orellanacanales@uandresbello.edu</a>, o al fono +56932514340, vía mensajería, whatsapp o telefónica.</p>
 </article>
