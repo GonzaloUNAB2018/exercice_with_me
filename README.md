@@ -33,6 +33,12 @@
         las actualizaciones importantes que se realizan a la aplicación.
         Solo debe descargarlas a un dispositivo <b>Android</b> versión 6.0 o 
         superior y ejecutarlo.</p>
+    <p>Ingrese a la aplicación, presionando sobre la versión existente en la carpeta</p>
+    <img src="">
+    <p>Presione "Download"</p>
+    <img src="">
+    <p>Espere la descarga e inicie la instalación presionando "abrir"</p>
+    <img src="">
     <p>Otorgue permisos para instalar desde fuentes desconocidas a su dispositivo</p>
     <br>
     <h3 id="two">Método 2: Descarga del código y ejecución con entorno de desarrollador</h3>
