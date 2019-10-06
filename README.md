@@ -17,8 +17,8 @@
                 <li style="text-indent:20px;"><a href="#f">Prepara el entorno Android</a></li>
                 <li style="text-indent:20px;"><a href="#g">Instala la aplicación en el dispositivo</a></li>
             </ol>
-            <li style="text-indent:10px;"><a href="#three">Modo de empleo</a></li>
         </ol>
+        <li><a href="#three">Modo de empleo</a></li>
     </ol>
     <h2>Release Notes</h2>
     <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md">A Release Notes</a></p>
