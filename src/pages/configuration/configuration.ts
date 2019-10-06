@@ -198,24 +198,25 @@ export class ConfigurationPage {
   }
 
   initGoogleFit(){
-      this.googleFitProvider.getPermissionToHealthData().then(h=>{
-        console.log(h);
-        if(h===true){
-          this.user.googleFit = 1;
-          this.afService.updateUserData(this.uid, this.user);
-          let toast = this.toastCtrl.create({
-            message: 'Google Fit Conectado',
-            duration: 1000
-          });
-          toast.present();
-        }
-      }).catch(e=>{
-        alert(e);
-        console.log(e)
-        this.user.googleFit = 2;
-        console.log(this.user.googleFit);
+    this.googleFitProvider.getPermissionToHealthData().then(h=>{
+      console.log(h);
+      if(h===true){
+        this.user.googleFit = 1;
         this.afService.updateUserData(this.uid, this.user);
-      })
+        let toast = this.toastCtrl.create({
+          message: 'Google Fit Conectado',
+          duration: 1000
+        });
+        toast.present();
+      }
+    })
+    .catch(e=>{
+      alert(e);
+      console.log(e)
+      this.user.googleFit = 2;
+      console.log(this.user.googleFit);
+      this.afService.updateUserData(this.uid, this.user);
+    })
     
   }
  
