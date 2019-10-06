@@ -45,7 +45,7 @@
         <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_04.jpeg?raw=true" width="200px">
         <li><p>El dispositivo instalará la aplicación</p></li>
         <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_05.jpeg?raw=true" width="200px">
-        <li><p>Una vez instalado, presione "Iniciar"</p></li>
+        <li><p>Una vez instalado, presione "abrir"</p></li>
         <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_06.jpeg?raw=true" width="200px">
         <li><p>Se abrirá la aplicación</p></li>
         <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/images/img_07.jpeg?raw=true" width="200px">
