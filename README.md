@@ -19,6 +19,11 @@
             </ol>
         </ol>
         <li><a href="#three">Modo de empleo</a></li>
+            <ol>
+                <li style="text-indent:20px;"><a href="#h">Uso y Ejercicios</a></li>
+                <li style="text-indent:20px;"><a href="#i">Google Fit</a></li>
+                <li style="text-indent:20px;"><a href="#j">Recuperar Password</a></li>
+            </ol>
     </ol>
     <h2>Release Notes</h2>
     <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md">A Release Notes</a></p>
@@ -85,6 +90,7 @@
     <h4 id="g">Instala la aplicación en el dispositivo</h4>
     <code>ionic cordova run android</code>
     <h3 id="three">Modo de empleo</h3>
+    <h4 id="h">Uso y Ejercicios</h4>
     <p>Pantalla de inicio donde se observa "Inicio de Sesión", "Registro" y "Recuperación de contraseña"</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true" width="200px">
     <p>Registro con todos los datos</p>
@@ -111,4 +117,14 @@
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_011.jpeg?raw=true" width="200px">
     <p>Espere hasta que las cargas de datos terminen. Una vez finalizado volverá a la pantalla inicial</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_012.jpeg?raw=true" width="200px">
+    <h4 id="i">Google Fit y Pulsos Cardiacos</h4>
+    <p>Si cuenta con un registro en Google Fit que tenga registrados pulsaciones cardiacas, puede rescatar la información desde el ícono Corazón</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_010.jpeg?raw=true" width="200px">
+    <p>Primero indique a la aplicación que necesita las pulsaciones, presione <b>OBTENER PULSACIONES</b></p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_013.jpeg?raw=true" width="200px">
+    <p>De no contar con registros la aplicación indicará <b>Sin registros pendientes</b> y guardará en la base de datos la fecha y hora del último registro. Así, no solicitar nuevamente el mismo registro</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_014.jpeg?raw=true" width="200px">
+    <h4 id="j">Recuperar Password</h4>
+    <p>En página inicial, presiones donde dice <b>¿Olvidó su contraseña?</b>, ingrese el email registrado, revise su correo y siga las instrucciones para cambiar la contraseña</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_015.jpeg?raw=true" width="200px">
 </article>
