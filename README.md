@@ -85,18 +85,18 @@
     <h4 id="g">Instala la aplicación en el dispositivo</h4>
     <code>ionic cordova run android</code>
     <h3 id="three">Modo de empleo</h3>
-    <h4>Pantalla de inicio donde se observa "Inicio de Sesión", "Registro" y "Recuperación de contraseña"</h4>
+    <p>Pantalla de inicio donde se observa "Inicio de Sesión", "Registro" y "Recuperación de contraseña"</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true" width="200px">
-    <h4>Registro con todos los datos</h4>
+    <p>Registro con todos los datos</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_002.jpeg?raw=true" width="200px">
-    <h4>Inicie sesión</h4>
+    <p>Inicie sesión</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_003.jpeg?raw=true" width="200px">
-    <h4>Si es la primera vez que inicia le dará conexión al README del repositorio en GitHub</h4>
+    <p>Si es la primera vez que inicia le dará conexión al README del repositorio en GitHub</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_004.jpeg?raw=true" width="200px">
-    <h4>Si no ha conectado con Google Fit antes, solicitará conectar. Si la rechaza, podrá volver a solicitar mas adelante desde configuración (Dicha conexión servirá para obtener mediciones de pulsaciones cardiacas en caso de contar con un Smartband sincronizado a Google Fit)</h4>
+    <p>Si no ha conectado con Google Fit antes, solicitará conectar. Si la rechaza, podrá volver a solicitar mas adelante desde configuración (Dicha conexión servirá para obtener mediciones de pulsaciones cardiacas en caso de contar con un Smartband sincronizado a Google Fit)</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_005.jpeg?raw=true" width="200px">
-    <h4>Iniciada la aplicación, puede ejecutar cualquiera de los 3 ejercicios en la página principal</h4>
+    <p>Iniciada la aplicación, puede ejecutar cualquiera de los 3 ejercicios en la página principal</p>
     <img src="" width="200px">
-    <h4>En cualquiera de los 3 ejercicios, se iniciará una cuenta regresiva <b>de 5 segundos</b> antes de iniciar.</h4>
+    <p>En cualquiera de los 3 ejercicios, se iniciará una cuenta regresiva <b>de 5 segundos</b> antes de iniciar.</p>
     <img src="" width="200px">
 </article>
