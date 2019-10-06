@@ -17,6 +17,7 @@
                 <li style="text-indent:20px;"><a href="#f">Prepara el entorno Android</a></li>
                 <li style="text-indent:20px;"><a href="#g">Instala la aplicación en el dispositivo</a></li>
             </ol>
+            <li style="text-indent:10px;"><a href="#three">Modo de empleo</a></li>
         </ol>
     </ol>
     <h2>Release Notes</h2>
@@ -83,4 +84,16 @@
     </p>
     <h4 id="g">Instala la aplicación en el dispositivo</h4>
     <code>ionic cordova run android</code>
+    <h3 id="three">Modo de empleo</h3>
+    <h4>Pantalla de inicio donde se observa "Inicio de Sesión", "Registro" y "Recuperación de contraseña"</h4>
+    <img src="">
+    <h4>Registro con todos los datos</h4>
+    <img src="">
+    <h4>Inicie sesión</h4>
+    <img src="">
+    <h4>Si es la primera vez que inicia le dará conexión al README del repositorio en GitHub</h4>
+    <img src="">
+    <h4>Si no ha conectado con Google Fit antes, solicitará conectar. Si la rechaza, podrá volver a solicitar mas adelante desde configuración (Dicha conexión servirá para obtener mediciones de pulsaciones cardiacas en caso de contar con un Smartband sincronizado a Google Fit)</h4>
+    <img src="">
+    
 </article>
