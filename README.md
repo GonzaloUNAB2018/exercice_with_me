@@ -1,6 +1,5 @@
 <article>
     <h1>Aplicación Exercice With Me</h1>
-    <!--img src="./src/assets/imgs/logo-kaplan.png" alt="100px"-->
     <h3>versión 0.1.1.1</h3>
     <h2 id="indice">Indice</h2>
     <ol>
@@ -10,14 +9,14 @@
             <li style="text-indent:10px;"><a href="#one">Instalación en dispositivo Método 1</a></li>
             <li style="text-indent:10px;"><a href="#two">Instalación en dispositivo Método 2</a></li>
             <ol>
-                    <li style="text-indent:20px;"><a href="#a">Instala Ionic v 3.9.2</a></li>
-                    <li style="text-indent:20px;"><a href="#b">Descarga desde Github</a></li>
-                    <li style="text-indent:20px;"><a href="#c">Ingresa a carpeta Healthy</a></li>
-                    <li style="text-indent:20px;"><a href="#d">Descarga componentes con NPM</a></li>
-                    <li style="text-indent:20px;"><a href="#e">Instala plataforma Android</a></li>
-                    <li style="text-indent:20px;"><a href="#f">Prepara el entorno Android</a></li>
-                    <li style="text-indent:20px;"><a href="#g">Instala la aplicación en el dispositivo</a></li>
-                </ol>
+                <li style="text-indent:20px;"><a href="#a">Instala Ionic v 3.9.2</a></li>
+                <li style="text-indent:20px;"><a href="#b">Descarga desde Github</a></li>
+                <li style="text-indent:20px;"><a href="#c">Ingresa a carpeta Exercice With Me</a></li>
+                <li style="text-indent:20px;"><a href="#d">Descarga componentes con NPM</a></li>
+                <li style="text-indent:20px;"><a href="#e">Instala plataforma Android</a></li>
+                <li style="text-indent:20px;"><a href="#f">Prepara el entorno Android</a></li>
+                <li style="text-indent:20px;"><a href="#g">Instala la aplicación en el dispositivo</a></li>
+            </ol>
         </ol>
     </ol>
     <h2>Release Notes</h2>
