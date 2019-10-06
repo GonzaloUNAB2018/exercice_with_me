@@ -74,7 +74,7 @@
     <h4 id="d">Descarga componentes con NPM</h4>
     <code>npm -i</code>
     <h4 id="e">Instala plataforma Android</h4>
-    <code>ionic cordova platform add android@6.3</code>
+    <code>ionic cordova platform add android@7</code>
     <h4 id="f">Prepara el entorno Android</h4>
     <code>ionic cordova prepare android</code>
     <p>En éste punto ya debes tener tu smartphone conectado al pc
