@@ -1,6 +1,5 @@
 <article>
         <h1>Aplicación Exercice With Me</h1>
-        <!--img src="./src/assets/imgs/logo-kaplan.png" alt="100px"-->
         <h3>versión 1.1.1</h3>
         <h2>Detalles de la ultima actualización</h2>
         <ol>
