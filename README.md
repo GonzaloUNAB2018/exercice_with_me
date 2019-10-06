@@ -26,7 +26,7 @@
             </ol>
     </ol>
     <h2>Release Notes</h2>
-    <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md">A Release Notes</a></p>
+    <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md" target="_blank">A Release Notes</a></p>
     <h2 id="instalacion">Descarga e instalacion</h2>
     <h3>"Instalation Notes"</h3>
     <p>La aplicación está construida desde el entorno de 
@@ -36,7 +36,7 @@
     <p>Para ejecutar la aplicación existen 2 métodos:</p>
     <h3 id="one">Método 1: Instalación desde APK</h3>
     <ol>
-        <li><p>En la carpeta <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK">apk</a> 
+        <li><p>En la carpeta <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK" target="_blank">apk</a> 
             de github se cargan constantemente todas
             las actualizaciones importantes que se realizan a la aplicación.
             Solo debe descargarlas a un dispositivo <b>Android</b> versión 6.0 o 
@@ -64,9 +64,9 @@
     <p>Las herramientas necesarias son las siguientes:
     </p>
     <ol>
-        <li><a href="https://developer.android.com/studio">Android Studio</a></li>
-        <li><a href="https://git-scm.com/downloads">Git</a></li>
-        <li><a href="https://nodejs.org/download/release/v8.16.1/node-v8.16.1-x64.msi">Node v8</a></li>
+        <li><a href="https://developer.android.com/studio" target="_blank">Android Studio</a></li>
+        <li><a href="https://git-scm.com/downloads" target="_blank">Git</a></li>
+        <li><a href="https://nodejs.org/download/release/v8.16.1/node-v8.16.1-x64.msi" target="_blank">Node v8</a></li>
     </ol>
     <p>Una vez estén todas las aplicaciones instaladas, ejecutamos una aplicación de consola
         (yo uso Powershell) desde una carpeta a la que se destine el proyecto, por ejemplo
