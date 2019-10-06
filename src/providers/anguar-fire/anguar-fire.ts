@@ -49,9 +49,9 @@ export class AnguarFireProvider {
   }
 
   updateExercices(uid, ex, exDay, data){
-    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id).update(ex);
-    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id+'/Grupos/'+exDay.eid).update(exDay);
-    this.afDb.object('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id+'/Grupos/'+exDay.eid+'/Datos/'+data.id).update(data);
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id).update(ex);
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id+'/Grupos/'+exDay.eid).update(exDay);
+    this.afDb.database.ref('Ejercicios_Pacientes/Ejercicios/'+uid+'/'+ex.id+'/Grupos/'+exDay.eid+'/Datos/'+data.id).update(data);
 
   }
 

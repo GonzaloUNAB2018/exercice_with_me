@@ -88,6 +88,11 @@ export class HealthStatusResumePage {
     }).catch(e=>{
       this.navCtrl.pop();
       alert(e);
+      let toast = this.toastCtrl.create({
+        message: 'Otorgue permiso de acceso a Google Fit desde configuración',
+        duration: 2000,
+      });
+      toast.present();
     })   
   }
 

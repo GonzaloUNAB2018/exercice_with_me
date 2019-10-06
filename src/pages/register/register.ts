@@ -55,13 +55,17 @@ export class RegisterPage {
                           this.afAuth.auth.currentUser.updateProfile({
                             displayName : this.user.name
                           })
-                            loader.dismiss().then(()=>{
-                            this.navCtrl.setRoot(WaitingPage);
-                            let toast = this.toastCtrl.create({
-                              message: 'Iniciando la aplicación por favor espere',
-                              duration: 2000,
-                            });
-                            toast.present();
+                            loader.dismiss()
+                            loader.onDidDismiss(()=>{
+                              this.afAuth.auth.signOut().then(()=>{
+
+                                this.navCtrl.setRoot(InitialPage);
+                                let toast = this.toastCtrl.create({
+                                  message: 'Inicie sesión con las credenciales registradas',
+                                  duration: 2000,
+                                });
+                                toast.present();
+                              });                           
                           });
                         }
                       }
@@ -73,6 +77,7 @@ export class RegisterPage {
                           duration: 3000
                         });
                         toast.present();
+                        loader.dismiss()
                       })
                     }, 1000);
                   }else{

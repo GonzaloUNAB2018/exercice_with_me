@@ -17,7 +17,7 @@ export class GoogleFitProvider {
   }
 
   public getPermissionToHealthData(){
-    this.health.requestAuthorization([
+    return this.health.requestAuthorization([
       'height', 'weight','nutrition',  //read and write permissions
       {
         read: [

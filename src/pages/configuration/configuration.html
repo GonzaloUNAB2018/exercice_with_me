@@ -13,6 +13,10 @@
       <ion-label class="item-text"><ion-icon name="trash"></ion-icon> Eliminar Datos de Pulsos</ion-label>
       <button ion-button outline item-end (click)="deleteRates()">Eliminar</button>
     </ion-item>
+    <ion-item *ngIf="googleFitButton">
+      <ion-label class="item-text"><ion-icon name="heart"></ion-icon> Conectar con Google Fit</ion-label>
+      <button ion-button outline item-end (click)="initGoogleFit()">Conectar</button>
+    </ion-item>
     <div padding>
       <p class="item-text"><ion-icon name="heart"></ion-icon> Existe en base de datos {{rates}} registros guardados.</p>
     </div>

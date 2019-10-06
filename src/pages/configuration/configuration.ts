@@ -6,6 +6,7 @@ import { JumpDbProvider } from '../../providers/jump-db/jump-db';
 import { ABSDbProvider } from '../../providers/ABS-db/ABSs-db';
 import { AnguarFireProvider } from '../../providers/anguar-fire/anguar-fire';
 import { User } from '../../models/user';
+import { GoogleFitProvider } from '../../providers/google-fit/google-fit';
 
 @Component({
   selector: 'page-configuration',
@@ -17,6 +18,7 @@ export class ConfigurationPage {
   rates : number = 0;
   user = {} as User;
   loadingObjectDeleteRates: any;
+  googleFitButton: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +31,7 @@ export class ConfigurationPage {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public afService: AnguarFireProvider,
+    public googleFitProvider: GoogleFitProvider
     ) {
     
       this.uid = navParams.get('uid');
@@ -39,6 +42,17 @@ export class ConfigurationPage {
             this.rates = 0;
           }else{
             this.rates = rts.length;
+          }
+        }
+      });
+      this.afService.getUserInfo(this.uid).valueChanges().subscribe(usr=>{
+        let user: any = usr
+        if(user){
+          user.googleFit;
+          if(user.googleFit === '0'||user.googleFit === '2'||user.googleFit === undefined){
+            this.googleFitButton = true;
+          }else if(user.googleFit === '1'){
+            this.googleFitButton = false;
           }
         }
       })
@@ -77,12 +91,12 @@ export class ConfigurationPage {
         {
           text: 'OK',
           handler: () => {
-            let toast = this.toastCtrl.create({
+            /*let toast = this.toastCtrl.create({
               message: 'Deshabilitado por periodo de pruebas',
               duration: 3000
             });
-            toast.present();
-            //this.deleteDatabase(this.uid);
+            toast.present();*/
+            this.deleteDatabase(this.uid);
           }
         }
       ]
@@ -147,12 +161,12 @@ export class ConfigurationPage {
   }
 
   deleteRates(){
-    let toast = this.toastCtrl.create({
+    /*let toast = this.toastCtrl.create({
       message: 'Deshabilitado por periodo de pruebas',
       duration: 3000
     });
-    toast.present();
-    /*this.loadingDeleteRates();
+    toast.present();*/
+    this.loadingDeleteRates();
     setTimeout(() => {
       this.user.lastRateSolicitude = new Date(new Date().getTime() - 30 * 24 * 60 * 60 * 1000).toString();
       this.afService.deleteRates(this.uid);
@@ -172,7 +186,22 @@ export class ConfigurationPage {
           }
         })
       }, 500);
-    }, 1000);*/
+    }, 1000);
+  }
+
+  initGoogleFit(){
+      this.googleFitProvider.getPermissionToHealthData().then(h=>{
+        console.log(h);
+        this.user.googleFit = 1;
+        this.afService.updateUserData(this.uid, this.user);
+      }).catch(e=>{
+        alert(e);
+        console.log(e)
+        this.user.googleFit = 2;
+        console.log(this.user.googleFit);
+        this.afService.updateUserData(this.uid, this.user);
+      })
+    
   }
  
 }

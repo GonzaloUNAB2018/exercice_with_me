@@ -22,5 +22,7 @@ export class User {
     sex: string;
     googleFit: number;
     revised: number;
+    releaseNote: number;
+    firstTime: number;
 
 }
