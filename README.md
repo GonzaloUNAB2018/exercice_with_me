@@ -125,6 +125,8 @@
     <p>De no contar con registros la aplicación indicará <b>Sin registros pendientes</b> y guardará en la base de datos la fecha y hora del último registro. Así, no solicitar nuevamente el mismo registro</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_014.jpeg?raw=true" width="200px">
     <h4 id="j">Recuperar Password</h4>
-    <p>En página inicial, presiones donde dice <b>¿Olvidó su contraseña?</b>, ingrese el email registrado, revise su correo y siga las instrucciones para cambiar la contraseña</p>
+    <p>En página inicial, presiones donde dice <b>¿Olvidó su contraseña?</b></p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true" width="200px">
+    <p>Ingrese el email registrado, revise su correo y siga las instrucciones para cambiar la contraseña</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_015.jpeg?raw=true" width="200px">
 </article>
