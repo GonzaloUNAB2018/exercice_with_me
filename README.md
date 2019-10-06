@@ -96,17 +96,19 @@
     <p>Si no ha conectado con Google Fit antes, solicitará conectar. Si la rechaza, podrá volver a solicitar mas adelante desde configuración (Dicha conexión servirá para obtener mediciones de pulsaciones cardiacas en caso de contar con un Smartband sincronizado a Google Fit)</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_005.jpeg?raw=true" width="200px">
     <p>Iniciada la aplicación, puede ejecutar cualquiera de los 3 ejercicios en la página principal</p>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_006.jpeg?raw=true" width="200px">
-    <p>En cualquiera de los 3 ejercicios, se iniciará una cuenta regresiva <b>de 5 segundos</b> antes de iniciar</p>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_007.jpeg?raw=true" width="200px">
-    <p>Ejercicios Abdominales registrará datos de Giroscopio y Acelerómetro (X, Y y Z de cada uno)</p>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_008.jpeg?raw=true" width="200px">
-    <p>Ejercicios Saltos registrará datos de Acelerómetro (X, Y y Z)</p>
-    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_009.jpeg?raw=true" width="200px">
-    <p>Ejercicios Caminata registrará datos de GPS (Latitud, Longitud, Velocidad) y Pasos ejecutados en la actividad</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_010.jpeg?raw=true" width="200px">
+    <p>En cualquiera de los 3 ejercicios, se iniciará una cuenta regresiva <b>de 5 segundos</b> antes de iniciar</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_006.jpeg?raw=true" width="200px">
+    <p>Ejercicios Abdominales registrará datos de Giroscopio y Acelerómetro (X, Y y Z de cada uno)</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_007.jpeg?raw=true" width="200px">
+    <p>Ejercicios Saltos registrará datos de Acelerómetro (X, Y y Z)</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_008.jpeg?raw=true" width="200px">
+    <p>Ejercicios Caminata registrará datos de GPS (Latitud, Longitud, Velocidad) y Pasos ejecutados en la actividad</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_009.jpeg?raw=true" width="200px">
     <p>Una vez terminado cada ejercicio volverá a la página principal y puede sincronizar en la base de datos, presionando el ícono de la Nube con flecha hacia arriba</p>
+    <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_010.jpeg?raw=true" width="200px">
+    <p>Para subir la información presiones <b>SINCRONIZAR</b></p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_011.jpeg?raw=true" width="200px">
-    <p>Para subir la información presiones <b>SINCRONIZAR</b> y espere hasta que las cargas de datos terminen. Una vez finalizado volverá a la pantalla inicial</p>
+    <p>Espere hasta que las cargas de datos terminen. Una vez finalizado volverá a la pantalla inicial</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_012.jpeg?raw=true" width="200px">
 </article>
