@@ -20,6 +20,8 @@
                 </ol>
         </ol>
     </ol>
+    <h2>Release Notes</h2>
+    <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md">A Release Notes</a></p>
     <h2 id="instalacion">Descarga e instalacion</h2>
     <h3>"Instalation Notes"</h3>
     <p>La aplicación está construida desde el entorno de 
