@@ -131,6 +131,13 @@
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_001.jpeg?raw=true" width="200px">
     <p>Ingrese el email registrado, revise su correo y siga las instrucciones para cambiar la contraseña</p>
     <img src="https://github.com/GonzaloUNAB2018/exercice_with_me/blob/master/APK/Instructions_images/image_015.jpeg?raw=true" width="200px">
-    <h3 id="four">Contacto</h3>
+    <h3 id="four">Como Ejecutar Ejercicios</h3>
+    <h4>Abdominales</h4>
+    <p>Para los abdominales, solo se necesita colocar el celular con ambas manos en el pecho, con la pantalla mirando hacia el cuerpo y se ejecutan los ejercicios. No se requiere que se haga rápido, la frecuencia de abdominales los pone el usuario, pero al menos un minuto de ejercicios. La aplicación medirá los valores que arrojan los sensores "acelerómetro" y "giroscopio" y almacenarlos al presionar terminar.</p>
+    <h4>Saltos</h4>
+    <p>Para los saltos, al igual que abdominales colocar el celular con ambas manos en el pecho, con la pantalla mirando hacia el cuerpo y se ejecutan los saltos. De misma manera no se requiere que se haga rápido, la frecuencia de saltos los pone el usuario, pero al menos un minuto de ejercicios. La aplicación medirá los valores que arrojan los sensores "acelerómetro" y almacenarlos al presionar terminar.</p>
+    <h4>Caminata</h4>
+    <p>Para la caminata puede ser caminando o trotando, la idea es que sean mas de 3 minutos de ejercicios. En éste caso se guardan registros de geolocalización y cuenta pasos.</p>
+    <h3 id="five">Contacto</h3>
     <p>Para consultas o detalles de la aplicación contacte a <b>Gonzalo Orellana Canales</b>, email <a href="mailto:g.orellanacanales@uandresbello.edu">g.orellanacanales@uandresbello.edu</a>, o al fono +56932514340, vía mensajería, whatsapp o telefónica.</p>
 </article>
