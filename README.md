@@ -25,7 +25,8 @@
                 <li style="text-indent:20px;"><a href="#i">Google Fit</a></li>
                 <li style="text-indent:20px;"><a href="#j">Recuperar Password</a></li>
             </ol>
-        <li><a href="#four">Contacto</a></li>
+        <li><a href="#four">Como Ejecutar Ejercicios</a></li>
+        <li><a href="#five">Contacto</a></li>
     </ol>
     <h2>Release Notes</h2>
     <p>Revise el siguiente link. <a href="https://github.com/GonzaloUNAB2018/exercice_with_me/tree/master/APK/release_notes.md" target="_blank">A Release Notes</a></p>
