@@ -1,5 +1,6 @@
 <article>
     <h1>Aplicación Exercice With Me</h1>
+    <img src="./assets/imgs/icon.png" width="200px">
     <h3>versión 0.1.1.1</h3>
     <h2 id="indice">Indice</h2>
     <ol>
