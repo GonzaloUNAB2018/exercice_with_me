@@ -122,7 +122,8 @@ export class CaminataPage {
         });
         load.present();
         this.watch = this.geolocation.watchPosition({
-          enableHighAccuracy: true
+          enableHighAccuracy: true,
+          maximumAge: 1000,
         }).subscribe(location => {
           this.lat = location.coords.latitude;
           this.lng = location.coords.longitude;

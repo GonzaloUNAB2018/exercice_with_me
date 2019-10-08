@@ -6,11 +6,17 @@
 
   <button ion-button full round large color="primary"  
   
-  (click)="syncDb()" *ngIf="ableButtons">SINCRONIZAR</button>
+    (click)="getData()" *ngIf="read">Revisar Datos</button>
 
-  <button ion-button full round large color="primary"  
+  <div *ngIf="!read">
+    <button ion-button full round large color="primary"  
   
-  disabled *ngIf="!ableButtons">SINCRONIZAR</button>
+    (click)="syncDb()" *ngIf="ableButtons">SINCRONIZAR</button>
+
+    <button ion-button full round large color="primary"  
+    
+    disabled *ngIf="!ableButtons">SINCRONIZAR</button>
+  </div>
 
   <br>
 

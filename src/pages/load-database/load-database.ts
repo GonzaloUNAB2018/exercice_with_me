@@ -60,6 +60,7 @@ export class LoadDatabasePage {
 
   concat_exercices: any[]=[];
   suma : number = 0;
+  willPassEx: any[]=[]
 
   stepsinfo = {
     tipo: 'Caminata',
@@ -73,6 +74,7 @@ export class LoadDatabasePage {
     tipo: 'Abdominales',
     id: '003'
   }
+  read: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -85,7 +87,13 @@ export class LoadDatabasePage {
     public ABSDbService: ABSDbProvider,
     public stepsDbService: StepsDbProvider,
     ) {
-      this.uid = navParams.get('uid');      
+      this.uid = navParams.get('uid');
+      this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(usr=>{
+        let user: any = usr;
+        if(user){
+          
+        }
+      })
   }
 
   ionViewDidLoad() {
@@ -94,9 +102,14 @@ export class LoadDatabasePage {
     this.afProvider.getUserInfo(this.uid).valueChanges().subscribe(usr=>{
       let usr_ : any = usr
       if(usr){
-        if(usr_.lastExerciceLoad===undefined){
-          this.user.lastExerciceLoad = 1
-        }
+        this.user.lastExerciceID = usr_.lastExerciceID
+          if(this.user.lastExerciceID === undefined){
+            this.user.lastExerciceID = 0;
+            console.log('el valor del ultimo id es: '+this.user.lastExerciceID);
+          }else{
+            this.user.lastExerciceID = Number(this.user.lastExerciceID);
+            console.log('el valor del ultimo id es: '+this.user.lastExerciceID);
+          }
       }
     })
   }
@@ -191,8 +204,60 @@ export class LoadDatabasePage {
     }, 10);
   }
 
-  okLoadToDatabase(){
+  getData(){
     let load = this.loadingCtrl.create({
+      content: 'Calculando...'
+    });
+    load.present();
+    this.workstarted = true;
+    this.getABS();
+    this.getJumps();
+    this.getSteps();
+    setTimeout(() => {
+      load.dismiss();
+      load.onDidDismiss(()=>{
+        this.suma = this.ABS_tasks.length+this.steps_tasks.length+this.jump_tasks.length;
+        console.log(this.suma);
+        if(this.suma){
+          let load2 = this.loadingCtrl.create({
+            content: 'Comparando datos...'
+          });
+          load2.present();
+          setTimeout(() => {
+            this.concat_exercices = this.ABS_tasks.concat(this.steps_tasks, this.jump_tasks);
+            console.log(this.concat_exercices);
+            if(this.concat_exercices.length = this.suma){
+              load2.dismiss();
+              load2.onDidDismiss(()=>{
+                let load3 = this.loadingCtrl.create({
+                  content: 'Separando datos por cargar...'
+                });
+                load3.present();
+                setTimeout(() => {
+                  console.log(this.user.lastExerciceID);
+                  for(var a = 0; a <= this.suma; a++){
+                    if(this.concat_exercices[a].eid > this.user.lastExerciceID){
+                      this.willPassEx.push(this.concat_exercices[a]);
+                    };
+                    if(a === this.suma - 1){
+                      console.log(this.willPassEx);
+                      this.read = false;
+                      load3.dismiss();
+                      this.workstarted = false;
+                      break
+                    }
+                  }
+                }, 2000);
+              })
+            }
+          }, 2000);
+        }
+      })
+    }, 2000);
+  }
+
+  okLoadToDatabase(){
+    /*let load = this.loadingCtrl.create({
       content: 'Calculando...'
     });
     load.present();
@@ -214,125 +279,73 @@ export class LoadDatabasePage {
         console.log(this.ABS_tasks);
         console.log(this.steps_tasks);
         console.log(this.jump_tasks);
-        this.concat_exercices = this.ABS_tasks.concat(this.steps_tasks, this.jump_tasks);
-        if(this.concat_exercices){
-          console.log(this.concat_exercices);
-          if(load3){
-            setTimeout(() => {
-              for(var n = 0 ; n <= this.suma ; n++){
-                let m : number = 0;
-                let exDay = {
-                  eid : this.concat_exercices[n].eid,
-                  type : this.concat_exercices[n].type,
-                  save_time : this.concat_exercices[n].save_time,
-                };
-                let ex = {
-                  id : null,
-                  type : exDay.type
-                };
-                if(ex.type === 'Caminata'){
-                  ex.id = '001'
-                }else if(ex.type === 'Saltos'){
-                  ex.id = '002'
-                }else if(ex.type === 'Abdominales'){
-                  ex.id = '003'
-                }
-                //if(this.concat_exercices[n].id > this.user.lastExerciceLoad){
-                  console.log(this.concat_exercices[n].id);
-                  this.afProvider.updateExercices(this.uid, ex, exDay, this.concat_exercices[n]);
-                //}
-                console.log(n);
-                if(n===this.suma-1){
-                  console.log(n + ' datos revisados');
-                  console.log(m + ' datos no cargados');
-                  this.user.lastExerciceLoad = Date.now();
-                  this.afProvider.updateUserData(this.uid, this.user);
-                  console.log('finish')
-                  load3.dismiss().then(()=>{
-                    this.workstarted = false;
-                    let toast = this.toastCtrl.create({
-                      message: 'Carga finalizada',
-                      duration: 2000
-                    });
-                    toast.present();
-                    toast.onDidDismiss(()=>{
-                      this.navCtrl.pop();
-                    });
-                  });
-                  break
-                };
+        this.concat_exercices = this.ABS_tasks.concat(this.steps_tasks, this.jump_tasks);*/
+        console.log(this.willPassEx);
+        if(this.willPassEx.length > 0){
+          let load4 = this.loadingCtrl.create({
+            content: 'Cargando Datos'
+          });
+          load4.present();
+          setTimeout(() => {
+            for(var n = 0 ; n <= this.willPassEx.length ; n++){
+              let m : number = 0;
+              let exDay = {
+                eid : this.willPassEx[n].eid,
+                type : this.willPassEx[n].type,
+                save_time : this.willPassEx[n].save_time,
               };
-            }, 2000);
-          };
-        };
-      };
+              let ex = {
+                id : null,
+                type : exDay.type
+              };
+              if(ex.type === 'Caminata'){
+                ex.id = '001'
+              }else if(ex.type === 'Saltos'){
+                ex.id = '002'
+              }else if(ex.type === 'Abdominales'){
+                ex.id = '003'
+              }
+              //if(this.concat_exercices[n].id > this.user.lastExerciceLoad){
+                console.log(this.willPassEx[n].id);
+                this.afProvider.updateExercices(this.uid, ex, exDay, this.willPassEx[n]);
+                let lastData : number = this.willPassEx[n].eid;
+              //}
+              console.log(n);
+              if(n===this.willPassEx.length-1){
+                console.log(n + ' datos revisados');
+                console.log(m + ' datos no cargados');
+                this.user.lastExerciceID = lastData;
+                this.afProvider.updateUserData(this.uid, this.user);
+                console.log('finish')
+                load4.dismiss().then(()=>{
+                  this.workstarted = false;
+                  let toast = this.toastCtrl.create({
+                    message: 'Carga finalizada',
+                    duration: 2000
+                  });
+                  toast.present();
+                  toast.onDidDismiss(()=>{
+                    this.navCtrl.pop();
+                  });
+                });
+                break
+              };
+            };
+          }, 2000);
+        }else{
+          this.workstarted = false;
+          let toast = this.toastCtrl.create({
+            message: 'Nada que cargar',
+            duration: 2000
+          });
+          toast.present();
+          toast.onDidDismiss(()=>{
+            this.navCtrl.pop();
+          });
+        }
+      /*};
       })
-    }, 2000);
-    
-    /*setTimeout(() => {
-      this.suma = this.ABS_tasks.length+this.steps_tasks.length+this.jump_tasks.length;
-      console.log(this.suma);
-      if(this.suma >= 0){
-        load.dismiss();
-        this.concat_exercices = this.ABS_tasks.concat(this.steps_tasks.concat(this.jump_tasks));
-        console.log(this.concat_exercices);
-        let load_ = this.loadingCtrl.create({
-          content: 'Cargando Datos'
-        });
-        load_.present();
-        console.log(this.user.lastExerciceLoad);
-        for(var n = 0 ; n <= this.suma ; n++){
-          let m : number = 0;
-          let exDay = {
-            eid : this.concat_exercices[n].eid,
-            type : this.concat_exercices[n].type,
-            save_time : this.concat_exercices[n].save_time,
-          };
-          let ex = {
-            id : null,
-            type : exDay.type
-          };
-          if(ex.type === 'Caminata'){
-            ex.id = '001'
-          }else if(ex.type === 'Saltos'){
-            ex.id = '002'
-          }else if(ex.type === 'Abdominales'){
-            ex.id = '003'
-          }
-          if(this.concat_exercices[n].id > this.user.lastExerciceLoad){
-            this.afProvider.updateExercices(this.uid, ex, exDay, this.concat_exercices[n]);
-          }
-          console.log(n);
-          if(n=this.suma){
-            console.log(n + ' datos revisados');
-            console.log(m + ' datos no cargados');
-            this.user.lastExerciceLoad = Date.now();
-            this.afProvider.updateUserData(this.uid, this.user);
-            console.log('finish')
-            load_.dismiss();
-            this.workstarted = false;
-            let toast = this.toastCtrl.create({
-              message: 'Carga finalizada',
-              duration: 2000
-            });
-            toast.present();
-            toast.onDidDismiss(()=>{
-              this.navCtrl.pop();
-            });
-          };
-        };
-      }else{
-        this.workstarted = false;
-        let load = this.loadingCtrl.create({
-          content: 'Sin sincronizar',
-          duration: 1000,
-        });
-        load.present()
-        load.onDidDismiss(() => {
-          this.navCtrl.pop();
-        });
-      } 
-    }, 3000);*/
+    }, 2000);*/
   }
 
   cancelToast() {
@@ -378,12 +391,5 @@ export class LoadDatabasePage {
       this.okToast();
       loading.dismiss();
     }, 1300);
-  }
-
-  loadNewSync(){
-    this.loadSyncData = this.loadingCtrl.create({
-       content: 'Calculando datos...',
-     });
-     this.loadSyncData.present();
-  }
+  };
 }
