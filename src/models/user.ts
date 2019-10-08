@@ -24,5 +24,6 @@ export class User {
     revised: number;
     releaseNote: number;
     firstTime: number;
+    lastExerciceID: number;
 
 }
